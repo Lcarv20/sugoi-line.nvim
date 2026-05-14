@@ -1,0 +1,104 @@
+*sugoi-line.txt*	A pill-style statusline and tabline for Neovim
+
+==============================================================================
+INTRODUCTION						*sugoi-line*
+
+sugoi-line.nvim is a pill-style statusline and tabline plugin for Neovim.
+Colors are automatically derived from your current colorscheme.
+
+Requirements:
+  - Neovim 0.10+
+  - A Nerd Font (for icons)
+  - nvim-web-devicons (optional, for file icons)
+  - gitsigns.nvim (optional, for git info)
+
+==============================================================================
+SETUP							*sugoi-line.setup*
+
+>lua
+	require("sugoi-line").setup()
+<
+
+That's it. No configuration required.
+
+==============================================================================
+CONFIGURATION						*sugoi-line.config*
+
+>lua
+	require("sugoi-line").setup({
+		pill_bg = nil,
+		colors = {
+			mode_normal = "#f38ba8",
+			mode_insert = "#a6e3a1",
+			mode_visual = "#89b4fa",
+			mode_cmd = "#f5c2e7",
+			diag_error = "#f38ba8",
+			diag_warn = "#f9e2af",
+			diag_info = "#89b4fa",
+			git_branch = "#b4befe",
+			git_add = "#a6e3a1",
+			git_change = "#fab387",
+			git_remove = "#f38ba8",
+			file_info = "#f5c2e7",
+			macro_recording = "#f38ba8",
+			macro_recorded = "#a6e3a1",
+			accent = "#cba6f7",
+			tab_fg = "#706860",
+			sel_fg = "#eae6e1",
+			sel_bg = "#F0C040",
+			logo_fg = "#F0C040",
+		},
+		statusline = {
+			enable = true,
+		},
+		tabline = {
+			enable = true,
+			show_tab_number = true,
+		},
+	})
+<
+
+All options are optional. Defaults are used when not specified.
+
+`pill_bg`		(string|nil)	Custom pill background color.
+				Auto-detected from your colorscheme when nil.
+
+`colors`		(table)		Override individual colors. All color
+				values are hex strings (e.g. "#f38ba8").
+				See above for the full list of keys.
+
+`statusline`		(table)
+  `enable`		(boolean)	Enable the statusline. Default: true.
+
+`tabline`		(table)
+  `enable`		(boolean)	Enable the tabline. Default: true.
+  `show_tab_number`	(boolean)	Show tab numbers. Default: true.
+
+==============================================================================
+STATUSLINE FEATURES					*sugoi-line.statusline*
+
+- Mode indicator with color-coded pill
+- Cursor location (line:column + percentage)
+- Diagnostics (errors, warnings, info)
+- LSP progress
+- Macro recording/recorded indicator
+- File name with icon (requires nvim-web-devicons)
+- Git branch and hunks (requires gitsigns.nvim)
+
+==============================================================================
+TABLINE FEATURES					*sugoi-line.tabline*
+
+- Pill-style tabs with file names
+- Tab numbers
+- Tab renaming
+
+==============================================================================
+KEYMAPS							*sugoi-line.keymaps*
+
+The following keymaps are set by the tabline:
+
+`<leader>tn`		New tab
+`<leader>tc`		Close tab
+`<leader>tr`		Rename tab (prompts for input)
+
+ vim:tw=78:ts=8:ft=help:norl:

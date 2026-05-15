@@ -4,8 +4,8 @@ local ICONS = {
 	nvim = "  ",
 	left_sep = "",
 	right_sep = "",
-	active_dot = "",
-	inactive_dot = "",
+	active_dot = "⏺",
+	inactive_dot = "⊙",
 }
 
 local function hl(name, val)

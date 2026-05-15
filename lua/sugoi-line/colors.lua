@@ -66,12 +66,16 @@ function M.extract(opts)
 		accent = get_hl_color("CursorLineNr", "fg") or (is_dark and "#cba6f7" or "#c09030"),
 
 		tab_fg = get_hl_color("Comment", "fg") or get_hl_color("LineNr", "fg") or (is_dark and "#706860" or "#8b8680"),
-		sel_fg = get_hl_color("Normal", "fg") or (is_dark and "#161616" or "#ffffff"),
-		sel_bg = get_hl_color("TabLineSel", "bg") or get_hl_color("CursorLineNr", "fg") or (is_dark and "#F0C040" or "#C09030"),
-		logo_fg = get_hl_color("CursorLineNr", "fg") or get_hl_color("Function", "fg") or (is_dark and "#F0C040" or "#C09030"),
+		sel_fg = get_hl_color("PmenuSel", "fg") or get_hl_color("Normal", "fg") or (is_dark and "#161616" or "#ffffff"),
+		sel_bg = get_hl_color("PmenuSel", "bg")
+			or get_hl_color("TabLineSel", "bg")
+			or (is_dark and "#F0C040" or "#C09030"),
+		logo_fg = "#16924c",
 		fill_bg = "NONE",
 		block_inactive_bg = pill_bg,
-		block_active_bg = get_hl_color("TabLineSel", "bg") or get_hl_color("CursorLineNr", "fg") or (is_dark and "#F0C040" or "#C09030"),
+		block_active_bg = get_hl_color("TabLineSel", "bg")
+			or get_hl_color("CursorLineNr", "fg")
+			or (is_dark and "#F0C040" or "#C09030"),
 	}
 
 	if opts.colors then

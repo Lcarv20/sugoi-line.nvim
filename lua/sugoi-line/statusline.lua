@@ -40,12 +40,13 @@ function M.init_hls(colors)
 	hl("SlineDiagWarn", { fg = colors.diag_warn, bg = colors.pill_bg })
 	hl("SlineDiagInfo", { fg = colors.diag_info, bg = colors.pill_bg })
 
-	hl("SlineGitBranch", { fg = colors.git_branch, bg = colors.pill_bg, bold = true })
+	hl("SlineGitBranch", { fg = colors.fg, bg = colors.pill_bg, bold = true })
+	hl("SlineGitBranchIcon", { fg = colors.git_branch, bg = colors.pill_bg })
 	hl("SlineGitAdd", { fg = colors.git_add, bg = colors.pill_bg })
 	hl("SlineGitChange", { fg = colors.git_change, bg = colors.pill_bg })
 	hl("SlineGitRemove", { fg = colors.git_remove, bg = colors.pill_bg })
 
-	hl("SlineFileInfo", { fg = colors.file_info, bg = colors.pill_bg, bold = true })
+	hl("SlineFileInfo", { fg = colors.fg, bg = colors.pill_bg, bold = true })
 
 	hl("SlineMacroRecorded", { fg = colors.macro_recorded, bg = colors.pill_bg, bold = true })
 	hl("SlineMacroRecording", { fg = colors.macro_recording, bg = colors.pill_bg, bold = true })
@@ -151,7 +152,7 @@ local function get_git()
 	local parts = {}
 	local branch = dict.head or dict.branch
 	if branch and branch ~= "" then
-		table.insert(parts, string.format("%%#SlineGitBranch#%s ", ICONS.git_branch) .. branch)
+		table.insert(parts, string.format("%%#SlineGitBranchIcon#%s %%#SlineGitBranch#%s", ICONS.git_branch, branch))
 	end
 	if dict.added and dict.added > 0 then
 		table.insert(parts, string.format("%%#SlineGitAdd#%s ", ICONS.git_add) .. dict.added)

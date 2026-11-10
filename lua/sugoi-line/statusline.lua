@@ -205,6 +205,12 @@ end
 
 function M.render()
 	local config = require("sugoi-line").config
+	local statusline_cfg = config.statusline or {}
+	local disabled_ft = statusline_cfg.disabled_filetypes or {}
+	if vim.tbl_contains(disabled_ft, vim.bo.filetype) then
+		return ""
+	end
+
 	local colors = require("sugoi-line.colors").extract(config)
 	M.init_hls(colors)
 	local parts = {}
@@ -225,7 +231,11 @@ function M.render()
 	return table.concat(parts, " ")
 end
 
-function M.setup()
+function M.setup(opts)
+	opts = opts or {}
+	if opts.globalstatus ~= false then
+		vim.opt.laststatus = 3
+	end
 	vim.opt.statusline = "%!v:lua.require'sugoi-line.statusline'.render()"
 
 	vim.api.nvim_create_autocmd("RecordingEnter", {

@@ -15,7 +15,7 @@ A pill-style statusline and tabline for Neovim.
 
 ```lua
 {
-  "lcarv/sugoi-line.nvim",
+  "Lcarv20/sugoi-line.nvim",
   config = function()
     require("sugoi-line").setup()
   end,
@@ -26,7 +26,7 @@ A pill-style statusline and tabline for Neovim.
 
 ```lua
 use {
-  "lcarv/sugoi-line.nvim",
+  "Lcarv20/sugoi-line.nvim",
   config = function()
     require("sugoi-line").setup()
   end,
@@ -63,6 +63,16 @@ require("sugoi-line").setup({
   },
   statusline = {
     enable = true,
+    globalstatus = true,
+    disabled_filetypes = {
+      "snacks_picker_list",
+      "snacks_picker_input",
+      "snacks_layout_box",
+      "oil",
+      "neo-tree",
+      "NvimTree",
+      "netrw",
+    },
   },
   tabline = {
     enable = true,

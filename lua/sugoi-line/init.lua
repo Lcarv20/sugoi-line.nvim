@@ -5,6 +5,16 @@ M.config = {
 	colors = {},
 	statusline = {
 		enable = true,
+		globalstatus = true,
+		disabled_filetypes = {
+			"snacks_picker_list",
+			"snacks_picker_input",
+			"snacks_layout_box",
+			"oil",
+			"neo-tree",
+			"NvimTree",
+			"netrw",
+		},
 	},
 	tabline = {
 		enable = true,
@@ -17,7 +27,7 @@ function M.setup(opts)
 	M.config = vim.tbl_deep_extend("force", M.config, opts)
 
 	if M.config.statusline.enable then
-		require("sugoi-line.statusline").setup()
+		require("sugoi-line.statusline").setup(M.config.statusline)
 	end
 
 	if M.config.tabline.enable then

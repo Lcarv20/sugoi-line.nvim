@@ -50,6 +50,8 @@ CONFIGURATION						*sugoi-line.config*
 		},
 		statusline = {
 			enable = true,
+			globalstatus = true,
+			disabled_filetypes = { ... },
 		},
 		tabline = {
 			enable = true,
@@ -69,6 +71,10 @@ All options are optional. Defaults are used when not specified.
 
 `statusline`		(table)
   `enable`		(boolean)	Enable the statusline. Default: true.
+  `globalstatus`	(boolean)	Use a global statusline across all splits
+				(sets vim.opt.laststatus = 3). Default: true.
+  `disabled_filetypes`	(table)		Filetypes where statusline is suppressed.
+				Default includes explorer/picker filetypes.
 
 `tabline`		(table)
   `enable`		(boolean)	Enable the tabline. Default: true.
